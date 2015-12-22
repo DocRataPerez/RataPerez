@@ -11,23 +11,26 @@
             Panel1.Enabled = True
             Exit Sub
         End If
-        Dim DU As New DatosUsuario
-        Dim TU As New TablaUsuario
-        DU.Nombre.Valor = txtNombre.Text.Trim
-        DU.Cedula.Valor = txtCedula.Text.Trim
-        DU.Celular.Valor = txtTelfMovil.Text.Trim
-        DU.Telefono.Valor = txtTelfFijo.Text.Trim
-        DU.Direccion.Valor = txtDireccion.Text.Trim
-        DU.Correo.Valor = txtCorreo.Text.Trim
-        DU.FechaNace.Valor = Date.Parse(txtDia.Text.Trim & "/" & cmbMes.SelectedIndex + 1 & "/" & txtAño.Text.Trim)
-        DU.Contraseña.Valor = txtContraseña.Text.Trim
-        Select Case TU.Insertar(DU)
-            Case True : lblEstado.Text = "Sus datos se han guardado satisfactoriamente."
-                cmdRegistrar.Enabled = False
-                cmdCancelar.Text = "Atrás"
-            Case False : lblEstado.Text = "Error interno, operación no completada."
-
-        End Select
+        Try
+            Dim DU As New DatosUsuario
+            Dim TU As New TablaUsuario
+            DU.Nombre.Valor = txtNombre.Text.Trim
+            DU.Cedula.Valor = txtCedula.Text.Trim
+            DU.Celular.Valor = txtTelfMovil.Text.Trim
+            DU.Telefono.Valor = txtTelfFijo.Text.Trim
+            DU.Direccion.Valor = txtDireccion.Text.Trim
+            DU.Correo.Valor = txtCorreo.Text.Trim
+            DU.FechaNace.Valor = Date.Parse(txtDia.Text.Trim & "/" & cmbMes.SelectedIndex + 1 & "/" & txtAño.Text.Trim)
+            DU.Contraseña.Valor = txtContraseña.Text.Trim
+            Select Case TU.Insertar(DU)
+                Case True : lblEstado.Text = "Sus datos se han guardado satisfactoriamente."
+                    cmdRegistrar.Enabled = False
+                    cmdCancelar.Text = "Atrás"
+                Case False : lblEstado.Text = "Error interno, operación no completada."
+            End Select
+        Catch ex As Exception
+            lblEstado.Text = "Error interno, operación no completada."
+        End Try
         Panel1.Enabled = True
     End Sub
     Private Function DatosCorrectos() As Boolean

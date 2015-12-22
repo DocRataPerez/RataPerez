@@ -39,7 +39,8 @@
         Return Yo
     End Function
     Public Function CedulaBien() As Boolean
-        If Cedula.Valor.lenght <> 10 Then Return False
+        If Cedula.Valor = Nothing Then Return False
+        If CStr(Cedula.Valor).Length <> 10 Then Return False
         Dim UltimoDigito As Integer = 0
         Dim Suma As Integer = 0
         For I As Integer = 1 To 9
