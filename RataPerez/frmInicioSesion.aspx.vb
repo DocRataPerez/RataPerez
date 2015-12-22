@@ -10,6 +10,7 @@
     End Sub
 
     Protected Sub cmdIniciarSesion_Click(sender As Object, e As EventArgs) Handles cmdIniciarSesion.Click
+        If txtContraseña.Text.Trim = "" Or txtUsuario.Text.Trim = "" Then Exit Sub
         Dim DU As New DatosUsuario
         Dim TU As New TablaUsuario
         DU.Cedula.Valor = txtUsuario.Text.Trim

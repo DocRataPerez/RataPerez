@@ -38,4 +38,16 @@
         Yo.FechaNace = FechaNace
         Return Yo
     End Function
+    Public Function CedulaBien() As Boolean
+        If Cedula.Valor.lenght <> 10 Then Return False
+        Dim UltimoDigito As Integer = 0
+        Dim Suma As Integer = 0
+        For I As Integer = 1 To 9
+            Dim A As Integer = Val(Mid(Cedula.Valor, I, 1)) * ((I Mod 2) + 1)
+            If A >= 10 Then A -= 9
+            Suma += A
+        Next
+        If Suma Mod 10 <> 0 Then UltimoDigito = 10 - Suma Mod 10
+        Return Val(Mid(Cedula.Valor, 10, 1)) = UltimoDigito
+    End Function
 End Class
