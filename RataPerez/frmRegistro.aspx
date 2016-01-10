@@ -74,10 +74,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                      <asp:Label ID="lblContraseña" runat="server" Text="*Contraseña:"></asp:Label>
-                      <asp:TextBox ID="txtContraseña" runat="server" Width="285px" type="password" class="form-control" placeholder="Contraseña"></asp:TextBox>
-                </div>
-                <div class="form-group">
                     <asp:Button ID="cmdRegistrar" runat="server" Text="Registrarme" class="btn btn-default"/>
                     <asp:Button ID="cmdCancelar" runat="server" Text="Cancelar" class="btn btn-default"/>
                 </div>

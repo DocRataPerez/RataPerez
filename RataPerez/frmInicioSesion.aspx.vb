@@ -1,7 +1,7 @@
 ﻿Public Class frmRegistro
-    Inherits System.Web.UI.Page
+    Inherits Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
     End Sub
 
@@ -17,7 +17,12 @@
         DU.Contraseña.Valor = txtContraseña.Text.Trim
         DU.Contraseña.TomarEnCuenta = False
         Select Case TU.IniciarSesion(DU)
-            Case 1 : Response.Redirect("frmPrincipal.aspx")
+            Case 1
+                Select Case DU.PrimerInicio.Valor
+                    Case True
+                        Response.Redirect("frmCambioContraseña.aspx?usr=" & DU.Cedula.Valor)
+                    Case False : Response.Redirect("frmPrincipal.aspx?usr=" & DU.Cedula.Valor)
+                End Select
             Case 0 : MsgBox("Credenciales incorrectas.")
             Case Else : MsgBox("Error interno, operación no completada.")
         End Select

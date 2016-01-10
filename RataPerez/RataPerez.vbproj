@@ -91,14 +91,25 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="frmCambioContraseña.aspx" />
     <Content Include="frmInicioSesion.aspx" />
     <Content Include="frmPrincipal.aspx" />
     <Content Include="frmRegistro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\DatosCita.vb" />
     <Compile Include="Datos\Datos.vb" />
+    <Compile Include="Datos\DatosEspecialidad.vb" />
+    <Compile Include="Datos\DatosOdontologo.vb" />
     <Compile Include="Datos\DatosUsuario.vb" />
+    <Compile Include="frmCambioContraseña.aspx.designer.vb">
+      <DependentUpon>frmCambioContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCambioContraseña.aspx.vb">
+      <DependentUpon>frmCambioContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="frmPrincipal.aspx.designer.vb">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
     </Compile>
@@ -121,6 +132,10 @@
       <DependentUpon>frmInicioSesion.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Logica\Mensajero.vb" />
+    <Compile Include="Logica\TablaCita.vb" />
+    <Compile Include="Logica\TablaEspecialidad.vb" />
+    <Compile Include="Logica\TablaOdontologo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

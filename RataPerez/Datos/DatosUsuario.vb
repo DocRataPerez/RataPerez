@@ -1,6 +1,6 @@
 ﻿Public Class DatosUsuario
     Inherits Datos
-    Public IdUsuario, Nombre, Contraseña, Cedula, Celular, Telefono, Direccion, Correo, FechaNace As DatoBdD
+    Public IdUsuario, Nombre, Contraseña, Cedula, Celular, Telefono, Direccion, Correo, FechaNace, PrimerInicio As DatoBdD
     Public Overrides Sub Limpiar()
         IdUsuario.Limpiar()
         Nombre.Limpiar()
@@ -11,6 +11,7 @@
         Direccion.Limpiar()
         Correo.Limpiar()
         FechaNace.Limpiar()
+        PrimerInicio.Limpiar()
     End Sub
 
     Public Overrides Sub TomarEnCuentaTodo(TomarEnCuenta As Boolean)
@@ -23,19 +24,23 @@
         Direccion.TomarEnCuenta = TomarEnCuenta
         Correo.TomarEnCuenta = TomarEnCuenta
         FechaNace.TomarEnCuenta = TomarEnCuenta
+        PrimerInicio.TomarEnCuenta = TomarEnCuenta
     End Sub
 
     Public Overrides Function Clone() As Object
         Dim Yo As New DatosUsuario
-        Yo.Contraseña = Contraseña
-        Yo.Nombre = Nombre
-        Yo.IdUsuario = IdUsuario
-        Yo.Cedula = Cedula
-        Yo.Celular = Celular
-        Yo.Telefono = Telefono
-        Yo.Direccion = Direccion
-        Yo.Correo = Correo
-        Yo.FechaNace = FechaNace
+        With Yo
+            .Contraseña = Contraseña
+            .Nombre = Nombre
+            .IdUsuario = IdUsuario
+            .Cedula = Cedula
+            .Celular = Celular
+            .Telefono = Telefono
+            .Direccion = Direccion
+            .Correo = Correo
+            .FechaNace = FechaNace
+            .PrimerInicio = PrimerInicio
+        End With
         Return Yo
     End Function
     Public Function CedulaBien() As Boolean
@@ -50,5 +55,14 @@
         Next
         If Suma Mod 10 <> 0 Then UltimoDigito = 10 - Suma Mod 10
         Return Val(Mid(Cedula.Valor, 10, 1)) = UltimoDigito
+    End Function
+    Public Shared Function GenerarContraseñaAleatoria(Tamaño As Integer) As String
+        Dim Contraseña As String = ""
+        Dim R As New Random(Date.Now.Ticks And Integer.MaxValue)
+        For I As Integer = 1 To Tamaño
+            Contraseña &= Chr(R.Next(48, 125))
+        Next
+        Contraseña = Regex.Replace(Contraseña, "\.|;\@\,\?", String.Empty)
+        Return Contraseña
     End Function
 End Class

@@ -21,6 +21,7 @@
             If D.Direccion.TomarEnCuenta Then .AddWithValue("@Direccion", D.Direccion.Valor)
             If D.Correo.TomarEnCuenta Then .AddWithValue("@Correo", D.Correo.Valor)
             If D.FechaNace.TomarEnCuenta Then .AddWithValue("@FechaNace", D.FechaNace.Valor)
+            If D.PrimerInicio.TomarEnCuenta Then .AddWithValue("@primera_sesion", D.PrimerInicio.Valor)
         End With
     End Sub
 
@@ -69,6 +70,33 @@
         If Dts.Contraseña.Valor <> T.Rows(0).Item("Contraseña") Then Return 0
         Dts.IdUsuario.Valor = T.Rows(0).Item("IdUsuario")
         Dts.Nombre.Valor = T.Rows(0).Item("Nombre")
+        Dts.PrimerInicio.Valor = CBool(T.Rows(0).Item("primera_sesion"))
         Return 1
+    End Function
+    Public Function CorreoRegistrado(ByRef Dts As DatosUsuario) As Integer
+        SQLExe.CommandText = "CorreoRegistrado"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Dim T As DataTable = Mostrar()
+        If T Is Nothing Then Return -1 'Error
+        Return Val(T.Rows(0).Item(0))
+    End Function
+    Public Function CambiarContraseña(ByRef Dts As DatosUsuario) As Boolean
+        SQLExe.CommandText = "CambiarContraseña"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return EjecutarCadSQL()
+    End Function
+    Public Function CambiarPrimeraSesion(ByRef Dts As DatosUsuario) As Boolean
+        SQLExe.CommandText = "CambiarPrimeraSesion"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return EjecutarCadSQL()
+    End Function
+    Public Function UsuarioCedula(ByRef Dts As DatosUsuario) As DataTable
+        SQLExe.CommandText = "UsuarioCedula"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return Mostrar()
     End Function
 End Class

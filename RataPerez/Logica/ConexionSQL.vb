@@ -4,9 +4,8 @@ Public Class ConexionSQL
     Private Transaccion As SqlTransaction
     Public RutaBdD As String
     Public Sub New()
-        '"Data Source = (Localdb)\mssqllocaldb; AttachDbFilename = '" & RutaBdD & "'; Integrated Security = True"
-        '"Data Source = (Localdb)\mssqllocaldb; Initial Catalog = Amanda2; Integrated Security = True"
-        _Conexion = New SqlConnection("workstation id=rataperez.mssql.somee.com;packet size=4096;user id=SantiagoYepez_SQLLogin_1;pwd=r54erjbp33;data source=rataperez.mssql.somee.com;persist security info=False;initial catalog=rataperez") '("Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True")
+        _Conexion = New SqlConnection("Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True")
+        '"workstation id=rataperez.mssql.somee.com;packet size=4096;user id=SantiagoYepez_SQLLogin_1;pwd=r54erjbp33;data source=rataperez.mssql.somee.com;persist security info=False;initial catalog=rataperez") '("Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True"
     End Sub
     Public ReadOnly Property Enlace As SqlConnection
         Get
