@@ -37,12 +37,16 @@
                 If Horas(0) = CType(F.Item("hora"), TimeSpan).Hours Then
                     IntervalosDisponibles(P) = Horas(0) + 1 & "-" & Horas(1)
                     Exit For
+                ElseIf Horas(1) = CType(F.Item("hora"), TimeSpan).Hours Then
+                    IntervalosDisponibles(P) = Horas(0) & "-" & Horas(1) - 1
+                    Exit For
                 ElseIf Horas(0) < CType(F.Item("hora"), TimeSpan).Hours And Horas(1) > CType(F.Item("hora"), TimeSpan).Hours Then
                     With IntervalosDisponibles
                         .RemoveAt(P)
                         .Insert(P, Horas(0) & "-" & CType(F.Item("hora"), TimeSpan).Hours)
                         .Insert(P + 1, CType(F.Item("hora"), TimeSpan).Hours + 1 & "-" & Horas(1))
                     End With
+                    Exit For
                 End If
             Next
         Next
@@ -53,7 +57,7 @@
             .Columns.Add("o")
             For Each I As String In IntervalosDisponibles
                 Dim Horas() As String = Split(I, "-")
-                .Rows.Add(Horas)
+                If Horas(0) <> Horas(1) Then .Rows.Add(Horas)
             Next
         End With
         GridView1.DataSource = T

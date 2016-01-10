@@ -60,7 +60,7 @@
         Dim Contraseña As String = ""
         Dim R As New Random(Date.Now.Ticks And Integer.MaxValue)
         For I As Integer = 1 To Tamaño
-            Contraseña &= Chr(R.Next(48, 125))
+            Contraseña &= Chr(R.Next(64, 90))
         Next
         Contraseña = Regex.Replace(Contraseña, "\.|;\@\,\?", String.Empty)
         Return Contraseña
