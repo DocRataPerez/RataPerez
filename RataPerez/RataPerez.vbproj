@@ -105,6 +105,7 @@
     <Compile Include="Datos\DatosCita.vb" />
     <Compile Include="Datos\Datos.vb" />
     <Compile Include="Datos\DatosEspecialidad.vb" />
+    <Compile Include="Datos\DatosHorario.vb" />
     <Compile Include="Datos\DatosOdontologo.vb" />
     <Compile Include="Datos\DatosUsuario.vb" />
     <Compile Include="frmAdmin.aspx.designer.vb">
@@ -161,7 +162,10 @@
     <Compile Include="Logica\TablaAdmin.vb" />
     <Compile Include="Logica\TablaCita.vb" />
     <Compile Include="Logica\TablaEspecialidad.vb" />
+    <Compile Include="Logica\TablaHorario.vb" />
     <Compile Include="Logica\TablaOdontologo.vb" />
+    <Compile Include="Logica\Transaccion.vb" />
+    <Compile Include="Logica\TransaccionOdontologo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

@@ -409,6 +409,12 @@
                         <asp:Button ID="cmdCancelar" runat="server" Text="Canelar" />
                     </td>
                 </tr>
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
+                    <td>
+                        <asp:Label ID="lblEstado" runat="server" Text="Haga clic en 'Guardar' para registrar al odontólogo."></asp:Label>
+                    </td>
+                </tr>
             </table>
         </asp:Panel>
     <div>

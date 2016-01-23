@@ -1,17 +1,17 @@
 ﻿Public Class DatosOdontologo
     Inherits Datos
-    Public IdOdontologo, Nombre, Apelldo, IdEspecialidad As DatoBdD
+    Public IdOdontologo, Nombre, Apellido, IdEspecialidad As DatoBdD
     Public Overrides Sub Limpiar()
         IdOdontologo.Limpiar()
         Nombre.Limpiar()
-        Apelldo.Limpiar()
+        Apellido.Limpiar()
         IdEspecialidad.Limpiar()
     End Sub
 
     Public Overrides Sub TomarEnCuentaTodo(TomarEnCuenta As Boolean)
         IdOdontologo.TomarEnCuenta = TomarEnCuenta
         Nombre.TomarEnCuenta = TomarEnCuenta
-        Apelldo.TomarEnCuenta = TomarEnCuenta
+        Apellido.TomarEnCuenta = TomarEnCuenta
         IdOdontologo.TomarEnCuenta = TomarEnCuenta
     End Sub
 
@@ -20,7 +20,7 @@
         With Yo
             .IdOdontologo = IdOdontologo
             .Nombre = Nombre
-            .Apelldo = Apelldo
+            .Apellido = Apellido
             .IdEspecialidad = IdEspecialidad
         End With
         Return Yo
