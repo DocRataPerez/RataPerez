@@ -28,6 +28,10 @@
                             <div class="col-md-offset-1 col-md-8">
                               <asp:TextBox ID="txtContraseña" runat="server" Width="264px" class="form-control" type="password" placeholder="Contraseña"></asp:TextBox>
                             </div>
+                            <asp:DropDownList ID="DropDownList1" runat="server">
+                                <asp:ListItem>Usuario</asp:ListItem>
+                                <asp:ListItem>Administración</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="form-group">
                             <div class="col-md-4">

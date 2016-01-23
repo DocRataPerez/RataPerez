@@ -28,7 +28,10 @@ Public Class TablaEspecialidad
     End Function
 
     Public Overrides Function Insertar(ByRef Dts As Datos) As Boolean
-        Throw New NotImplementedException()
+        SQLExe.CommandText = "InsertarEspecialidad"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return EjecutarCadSQL()
     End Function
 
     Public Overrides Function SeleccionarTodo(ByRef Optional Dts As Datos = Nothing) As DataTable

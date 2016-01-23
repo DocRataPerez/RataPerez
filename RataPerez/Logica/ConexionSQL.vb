@@ -5,7 +5,9 @@ Public Class ConexionSQL
     Public RutaBdD As String
     Public Sub New()
         Dim ServidorRemoto As String = "workstation id=rataperez.mssql.somee.com;packet size=4096;user id=SantiagoYepez_SQLLogin_1;pwd=r54erjbp33;data source=rataperez.mssql.somee.com;persist security info=False;initial catalog=rataperez"
-        _Conexion = New SqlConnection(ServidorRemoto) '("Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True")
+        Dim Local As String = "Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True"
+        _Conexion = New SqlConnection(Local)
+        '(ServidorRemoto)
     End Sub
     Public ReadOnly Property Enlace As SqlConnection
         Get

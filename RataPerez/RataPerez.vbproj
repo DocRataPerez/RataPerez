@@ -91,18 +91,29 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="frmAdmin.aspx" />
     <Content Include="frmCambioContraseña.aspx" />
     <Content Include="frmInicioSesion.aspx" />
     <Content Include="frmPrincipal.aspx" />
     <Content Include="frmRegistro.aspx" />
+    <Content Include="frmRegistroEspecialidad.aspx" />
+    <Content Include="frmRegistroOdontologo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\DatosAdministracion.vb" />
     <Compile Include="Datos\DatosCita.vb" />
     <Compile Include="Datos\Datos.vb" />
     <Compile Include="Datos\DatosEspecialidad.vb" />
     <Compile Include="Datos\DatosOdontologo.vb" />
     <Compile Include="Datos\DatosUsuario.vb" />
+    <Compile Include="frmAdmin.aspx.designer.vb">
+      <DependentUpon>frmAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdmin.aspx.vb">
+      <DependentUpon>frmAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="frmCambioContraseña.aspx.designer.vb">
       <DependentUpon>frmCambioContraseña.aspx</DependentUpon>
     </Compile>
@@ -124,6 +135,20 @@
       <DependentUpon>frmRegistro.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="frmRegistroEspecialidad.aspx.designer.vb">
+      <DependentUpon>frmRegistroEspecialidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistroEspecialidad.aspx.vb">
+      <DependentUpon>frmRegistroEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="frmRegistroOdontologo.aspx.designer.vb">
+      <DependentUpon>frmRegistroOdontologo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistroOdontologo.aspx.vb">
+      <DependentUpon>frmRegistroOdontologo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Logica\ConexionSQL.vb" />
     <Compile Include="frmInicioSesion.aspx.designer.vb">
       <DependentUpon>frmInicioSesion.aspx</DependentUpon>
@@ -133,6 +158,7 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Logica\Mensajero.vb" />
+    <Compile Include="Logica\TablaAdmin.vb" />
     <Compile Include="Logica\TablaCita.vb" />
     <Compile Include="Logica\TablaEspecialidad.vb" />
     <Compile Include="Logica\TablaOdontologo.vb" />
