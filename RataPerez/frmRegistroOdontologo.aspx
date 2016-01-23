@@ -63,7 +63,7 @@
                     <td>
                         <asp:DropDownList ID="cmbEspecialidad" runat="server">
                         </asp:DropDownList>
-                        <asp:DropDownList ID="cmbIdEspecialidad" runat="server">
+                        <asp:DropDownList ID="cmbIdEspecialidad" runat="server" Visible="False">
                         </asp:DropDownList>
                     </td>
                 </tr>

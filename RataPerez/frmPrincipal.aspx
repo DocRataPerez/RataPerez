@@ -66,25 +66,17 @@
                         <asp:Label ID="lblHorario" runat="server" Text="Horarios disponibles:"></asp:Label>
                     </td>
                     <td>
-                        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" AutoGenerateSelectButton="True">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <FooterStyle BackColor="#CCCCCC" />
                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="White" />
                             <SortedAscendingCellStyle BackColor="#F1F1F1" />
                             <SortedAscendingHeaderStyle BackColor="Gray" />
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="lblHora" runat="server" Text="Horario deseado:"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtHorarioDeseado" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

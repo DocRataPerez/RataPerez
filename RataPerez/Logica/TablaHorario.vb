@@ -39,7 +39,12 @@ Public Class TablaHorario
         Call IgualarDatos(Dts)
         Return EjecutarCadSQL()
     End Function
-
+    Public Function ConsultarHorario(ByRef Dts As DatosHorario) As DataTable
+        SQLExe.CommandText = "ConsultarHorario"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return Mostrar()
+    End Function
     Public Overrides Function SeleccionarTodo(ByRef Optional Dts As Datos = Nothing) As DataTable
         Throw New NotImplementedException()
     End Function

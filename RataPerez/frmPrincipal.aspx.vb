@@ -26,38 +26,60 @@
     End Sub
 
     Protected Sub cmdConsultarDisponibilidad_Click(sender As Object, e As EventArgs) Handles cmdConsultarDisponibilidad.Click
+        lblEstado.Text = "Cita no reservada."
+        GridView1.DataSource = Nothing
+        GridView1.DataBind()
+        Dim IntervalosDisponibles As New ArrayList
+        Dim DH As New DatosHorario
+        DH.IdOdontologo.Valor = cmbIdOdontologo.Items.Item(cmbOdontologo.SelectedIndex).ToString
+        For Each F As DataRow In (New TablaHorario).ConsultarHorario(DH).Rows
+            Dim Dia As String = ""
+            Select Case Calendar1.SelectedDate.DayOfWeek
+                Case DayOfWeek.Monday : Dia = "lunes"
+                Case DayOfWeek.Tuesday : Dia = "martes"
+                Case DayOfWeek.Wednesday : Dia = "miercoles"
+                Case DayOfWeek.Thursday : Dia = "jueves"
+                Case DayOfWeek.Friday : Dia = "viernes"
+                Case DayOfWeek.Saturday : Dia = "sabado"
+                Case DayOfWeek.Sunday : Dia = "domingo"
+            End Select
+            For Each P As String In Split(F.Item(Dia), "|")
+                Dim Horas() As String = Split(P, "-")
+                Dim Hi As Integer = Val(Horas(0))
+                Dim Hf As Integer = Val(Horas(1))
+                If Hi <> 0 And Hf <> 0 Then
+                    For I As Integer = Hi To Hf - 1
+                        IntervalosDisponibles.Add({I, I + 1})
+                    Next
+                End If
+            Next
+        Next
+        If IntervalosDisponibles.Count = 0 Then
+            lblEstado.Text = "No hay horarios disponibles para este día."
+            Exit Sub
+        End If
         Dim DC As New DatosCita
         DC.IdOdontologo.Valor = cmbIdOdontologo.Items.Item(cmbOdontologo.SelectedIndex).ToString
         DC.Fecha.Valor = Calendar1.SelectedDate
-        Dim IntervalosDisponibles As New ArrayList
-        IntervalosDisponibles.AddRange({"8-12", "13-16"})
         For Each F As DataRow In (New TablaCita).HorarioOcupado(DC).Rows
-            For P As Integer = 0 To IntervalosDisponibles.Count - 1
-                Dim Horas() As String = Split(IntervalosDisponibles(P), "-")
-                If Horas(0) = CType(F.Item("hora"), TimeSpan).Hours Then
-                    IntervalosDisponibles(P) = Horas(0) + 1 & "-" & Horas(1)
-                    Exit For
-                ElseIf Horas(1) = CType(F.Item("hora"), TimeSpan).Hours Then
-                    IntervalosDisponibles(P) = Horas(0) & "-" & Horas(1) - 1
-                    Exit For
-                ElseIf Horas(0) < CType(F.Item("hora"), TimeSpan).Hours And Horas(1) > CType(F.Item("hora"), TimeSpan).Hours Then
-                    With IntervalosDisponibles
-                        .RemoveAt(P)
-                        .Insert(P, Horas(0) & "-" & CType(F.Item("hora"), TimeSpan).Hours)
-                        .Insert(P + 1, CType(F.Item("hora"), TimeSpan).Hours + 1 & "-" & Horas(1))
-                    End With
+            Dim HoraOcupada As Integer = CType(F.Item("hora"), TimeSpan).Hours
+            For I As Integer = 0 To IntervalosDisponibles.Count - 1
+                If IntervalosDisponibles(I)(0) = HoraOcupada Then
+                    IntervalosDisponibles.RemoveAt(I)
                     Exit For
                 End If
             Next
         Next
-
+        If IntervalosDisponibles.Count = 0 Then
+            lblEstado.Text = "No hay horarios disponibles para este día."
+            Exit Sub
+        End If
         Dim T As New DataTable
         With T
-            .Columns.Add("i")
-            .Columns.Add("o")
-            For Each I As String In IntervalosDisponibles
-                Dim Horas() As String = Split(I, "-")
-                If Horas(0) <> Horas(1) Then .Rows.Add(Horas)
+            .Columns.Add("Desde")
+            .Columns.Add("Hasta")
+            For I As Integer = 0 To IntervalosDisponibles.Count - 1
+                .Rows.Add({IntervalosDisponibles(I)(0), IntervalosDisponibles(I)(1)})
             Next
         End With
         GridView1.DataSource = T
@@ -70,11 +92,15 @@
             DC.IdOdontologo.Valor = cmbIdOdontologo.Items.Item(cmbOdontologo.SelectedIndex).ToString
             DC.IdUsuario.Valor = lblIdUsuario.Text
             DC.Fecha.Valor = Calendar1.SelectedDate
-            DC.Hora.Valor = txtHorarioDeseado.Text & ":0:0"
+            DC.Hora.Valor = GridView1.SelectedRow.Cells(1).Text & ":00:00"
         End With
         Select Case (New TablaCita).Insertar(DC)
             Case True : lblEstado.Text = "Cita reservada."
             Case False : lblEstado.Text = "Error. Cita no reservada."
         End Select
+    End Sub
+
+    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+
     End Sub
 End Class

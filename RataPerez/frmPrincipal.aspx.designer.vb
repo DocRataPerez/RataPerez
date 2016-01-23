@@ -167,24 +167,6 @@ Partial Public Class frmPrincipal
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control lblHora.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblHora As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control txtHorarioDeseado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtHorarioDeseado As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control cmdReservar.
     '''</summary>
     '''<remarks>
