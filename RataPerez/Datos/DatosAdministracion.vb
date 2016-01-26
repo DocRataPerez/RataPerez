@@ -14,7 +14,7 @@
     End Sub
 
     Public Overrides Function Clone() As Object
-        Dim Yo As DatosAdministracion
+        Dim Yo As New DatosAdministracion
         With Yo
             .IdAdmin = IdAdmin
             .Usuario = Usuario

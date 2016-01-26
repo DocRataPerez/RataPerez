@@ -46,10 +46,10 @@
         Dim DU As New DatosUsuario
         DU.Cedula.Valor = txtCedula.Text.Trim
         DU.Cedula.TomarEnCuenta = False
-        'If Not DU.CedulaBien Then
-        'lblEstado.Text = "Cédula incorrecta."
-        'Return False
-        'End If
+        If Not DU.CedulaBien Then
+            lblEstado.Text = "Cédula incorrecta."
+            Return False
+        End If
         Dim TU As New TablaUsuario
         DU.Correo.Valor = txtCorreo.Text
         Select Case TU.CorreoRegistrado(DU)
