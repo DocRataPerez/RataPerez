@@ -30,6 +30,7 @@
                             </div>
                             <asp:DropDownList ID="DropDownList1" runat="server">
                                 <asp:ListItem>Usuario</asp:ListItem>
+                                <asp:ListItem>Odontólogo</asp:ListItem>
                                 <asp:ListItem>Administración</asp:ListItem>
                             </asp:DropDownList>
                         </div>

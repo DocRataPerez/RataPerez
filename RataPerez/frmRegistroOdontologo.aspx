@@ -42,7 +42,7 @@
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="Label2" runat="server" Text="Nombre:"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="*Nombre:"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="txtNombre" runat="server" Width="275px"></asp:TextBox>
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="Label3" runat="server" Text="Apellido:"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="*Apellido:"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="txtApellido" runat="server" Width="275px"></asp:TextBox>
@@ -58,7 +58,15 @@
                 </tr>
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="Label4" runat="server" Text="Especialidad:"></asp:Label>
+                        <asp:Label ID="Label37" runat="server" Text="*Cédula"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCedula" runat="server" Width="275px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">
+                        <asp:Label ID="Label4" runat="server" Text="*Especialidad:"></asp:Label>
                     </td>
                     <td>
                         <asp:DropDownList ID="cmbEspecialidad" runat="server">
@@ -69,7 +77,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style4">
-                        <asp:Label ID="Label5" runat="server" Text="Horario:"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text="*Horario:"></asp:Label>
                     </td>
                     <td>
                         <table class="auto-style1">

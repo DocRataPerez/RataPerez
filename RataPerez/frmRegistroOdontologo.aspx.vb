@@ -13,9 +13,12 @@
     End Sub
 
     Protected Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
+        If Not DatosCorrectos() Then Exit Sub
         Dim Doc As New DatosOdontologo
-        Doc.Nombre.Valor = txtNombre.Text
-        Doc.Apellido.Valor = txtApellido.Text
+        Doc.Nombre.Valor = txtNombre.Text.Trim
+        Doc.Apellido.Valor = txtApellido.Text.Trim
+        Doc.Cedula.Valor = txtCedula.Text.Trim
+        Doc.Contraseña.Valor = Datos.GenerarCadenaAleatoria(8)
         Doc.IdEspecialidad.Valor = cmbIdEspecialidad.Items.Item(cmbEspecialidad.SelectedIndex).ToString
         Dim DH As New DatosHorario
         With DH
@@ -35,4 +38,25 @@
             Case False : lblEstado.Text = "Error interno."
         End Select
     End Sub
+    Private Function DatosCorrectos() As Boolean
+        If txtApellido.Text.Trim = "" Or txtCedula.Text.Trim = "" Or txtNombre.Text.Trim = "" Then
+            lblEstado.Text = "Rellene todos los campos."
+            Return False
+        End If
+        If cmbIdEspecialidad.Items.Count = 0 Then
+            lblEstado.Text = "No ha seleccionado una especialidad."
+            Return False
+        End If
+        Dim DatosDocTemp As New DatosOdontologo
+        DatosDocTemp.Cedula.Valor = txtCedula.Text.Trim
+        If Not DatosDocTemp.CedulaBien Then
+            lblEstado.Text = "Cédula incorrecta."
+            Return False
+        End If
+        If (New TablaOdontologo).ExisteOdontologo(DatosDocTemp) Then
+            lblEstado.Text = "Se ha registrado otro odontólogo con este número de cédula."
+            Return False
+        End If
+        Return True
+    End Function
 End Class

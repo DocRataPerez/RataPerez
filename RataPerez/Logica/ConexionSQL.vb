@@ -4,7 +4,7 @@ Public Class ConexionSQL
     Private Transaccion As SqlTransaction
     Public RutaBdD As String
     Public Sub New()
-        Dim ServidorRemoto As String = "workstation id=rataperez.mssql.somee.com;packet size=4096;user id=SantiagoYepez_SQLLogin_1;pwd=r54erjbp33;data source=rataperez.mssql.somee.com;persist security info=False;initial catalog=rataperez"
+        Dim ServidorRemoto As String = "workstation id=matarata.mssql.somee.com;packet size=4096;user id=matarata_SQLLogin_1;pwd=hyoylq8i34;data source=matarata.mssql.somee.com;persist security info=False;initial catalog=matarata"
         Dim Local As String = "Data Source = (Localdb)\mssqllocaldb; Initial Catalog = rataperez; Integrated Security = True"
         _Conexion = New SqlConnection(Local)
         '(ServidorRemoto)

@@ -30,6 +30,9 @@ Public Class TransaccionOdontologo
     Private Function InsertarOdontologo() As Boolean
         Dim T As New TablaOdontologo(Conexion)
         T.EncapsularEnTransaccion = True
+        Dim DtsO As New DatosOdontologo
+        DtsO.Cedula = Odontologo.Cedula
+        If T.ExisteOdontologo(DtsO) Then Return False
         Return T.Insertar(Odontologo)
     End Function
     Private Function InsertarHorario() As Boolean

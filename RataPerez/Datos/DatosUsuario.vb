@@ -56,13 +56,4 @@
         If Suma Mod 10 <> 0 Then UltimoDigito = 10 - Suma Mod 10
         Return Val(Mid(Cedula.Valor, 10, 1)) = UltimoDigito
     End Function
-    Public Shared Function GenerarContraseñaAleatoria(Tamaño As Integer) As String
-        Dim Contraseña As String = ""
-        Dim R As New Random(Date.Now.Ticks And Integer.MaxValue)
-        For I As Integer = 1 To Tamaño
-            Contraseña &= Chr(R.Next(64, 90))
-        Next
-        Contraseña = Regex.Replace(Contraseña, "\.|;\@\,\?", String.Empty)
-        Return Contraseña
-    End Function
 End Class

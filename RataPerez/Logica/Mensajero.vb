@@ -1,17 +1,19 @@
 ﻿Imports System.Net.Mail
 Public Class Mensajero
-    Private Servidor, Usuario, Contraseña As String
+    Private Servidor, Puerto, Usuario, Contraseña, Ssl As String
     Public Function enviarCorreo(Mensaje As String, Asunto As String, Destinatario As String)
         Call ObtenerCredenciales()
         Dim Ret As Boolean = True
         Try
             Dim Mail As New MailMessage
-            Mail.From = New MailAddress("RataPerez@rataperez.somee.com")
+            Mail.From = New MailAddress("RataPerez@somee.rataperez.com")
             Mail.To.Add(Destinatario)
             Mail.Subject = Asunto
             Mail.Body = Mensaje
             Dim smtp As New SmtpClient(Servidor)
-            smtp.Port = 25
+            smtp.Port = Puerto
+            smtp.EnableSsl = True
+            If Ssl = "0" Then smtp.EnableSsl = False
             smtp.Credentials = New Net.NetworkCredential(Usuario, Contraseña)
             smtp.Send(Mail)
         Catch ex As Exception
@@ -25,7 +27,9 @@ Public Class Mensajero
         Dim creds() As String = Split(sr.ReadToEnd(), "|")
         sr.Close()
         Servidor = creds(0).Trim
-        Usuario = creds(1).Trim
-        Contraseña = creds(2).Trim
+        Puerto = creds(1).Trim
+        Usuario = creds(2).Trim
+        Contraseña = creds(3).Trim
+        Ssl = creds(4).Trim
     End Sub
 End Class

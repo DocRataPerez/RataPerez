@@ -22,7 +22,7 @@
                     Case 1
                         Select Case DU.PrimerInicio.Valor
                             Case True
-                                Response.Redirect("frmCambioContraseña.aspx?usr=" & DU.Cedula.Valor)
+                                Response.Redirect("frmCambioContraseña.aspx?usr=" & DU.Cedula.Valor & "&t=u")
                             Case False : Response.Redirect("frmPrincipal.aspx?usr=" & DU.Cedula.Valor)
                         End Select
                     Case 0 : MsgBox("Credenciales incorrectas.")
@@ -36,6 +36,23 @@
                 DA.Contraseña.TomarEnCuenta = False
                 Select Case TA.IniciarSesion(DA)
                     Case 1 : Response.Redirect("frmAdmin.aspx")
+                    Case 0 : MsgBox("Credenciales incorrectas.")
+                    Case Else : MsgBox("Error interno, operación no completada.")
+                End Select
+            Case "odontólogo"
+                Dim DTSO As New DatosOdontologo
+                DTSO.Cedula.Valor = txtUsuario.Text.Trim
+                DTSO.Contraseña.Valor = txtContraseña.Text
+                DTSO.Contraseña.TomarEnCuenta = False
+                Select Case (New TablaOdontologo).IniciarSesion(DTSO)
+                    Case 1
+                        Select Case DTSO.PrimerInicio.Valor
+                            Case True
+                                Response.Redirect("frmCambioContraseña.aspx?usr=" & DTSO.Cedula.Valor & "&t=d")
+                            Case False
+                                MsgBox("inicia sesion doc.")
+                                'Response.Redirect("frmPrincipal.aspx?usr=" & DTSO.Cedula.Valor)
+                        End Select
                     Case 0 : MsgBox("Credenciales incorrectas.")
                     Case Else : MsgBox("Error interno, operación no completada.")
                 End Select

@@ -21,7 +21,7 @@
             DU.Direccion.Valor = txtDireccion.Text.Trim
             DU.Correo.Valor = txtCorreo.Text.Trim
             DU.FechaNace.Valor = Date.Parse(txtDia.Text.Trim & "/" & cmbMes.SelectedIndex + 1 & "/" & txtAño.Text.Trim)
-            DU.Contraseña.Valor = DatosUsuario.GenerarContraseñaAleatoria(32)
+            DU.Contraseña.Valor = DatosUsuario.GenerarCadenaAleatoria(8)
             Select Case TU.Insertar(DU)
                 Case True
                     Call (New Mensajero).enviarCorreo("Su contraseña para ingreso a RataPerez es: " & DU.Contraseña.Valor, "Contraseña RataPerez", DU.Correo.Valor)

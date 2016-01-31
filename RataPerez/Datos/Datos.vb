@@ -36,4 +36,13 @@
 
     Public MustOverride Function Clone() As Object Implements ICloneable.Clone
     Public MustOverride Sub TomarEnCuentaTodo(TomarEnCuenta As Boolean)
+    Public Shared Function GenerarCadenaAleatoria(Tamaño As Integer) As String
+        Dim Contraseña As String = ""
+        Dim R As New Random(Date.Now.Ticks And Integer.MaxValue)
+        For I As Integer = 1 To Tamaño
+            Contraseña &= Chr(R.Next(64, 90))
+        Next
+        Contraseña = Regex.Replace(Contraseña, "\.|;\@\,\?", String.Empty)
+        Return Contraseña
+    End Function
 End Class
