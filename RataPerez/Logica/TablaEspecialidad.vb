@@ -40,4 +40,12 @@ Public Class TablaEspecialidad
         Call IgualarDatos(Dts)
         Return Mostrar()
     End Function
+    Public Function ExisteOdontologo(ByRef Dts As DatosEspecialidad) As Integer
+        SQLExe.CommandText = "ExisteEspecialidad"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Dim T As DataTable = Mostrar()
+        If T Is Nothing Then Return -1
+        Return T.Rows(0).Item(0)
+    End Function
 End Class

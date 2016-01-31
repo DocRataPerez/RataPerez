@@ -10,12 +10,6 @@
         .auto-style1 {
             width: 69%;
         }
-        .auto-style4 {
-            width: 124px;
-        }
-        .auto-style6 {
-            width: 252px;
-        }
         .auto-style8 {
             width: 107px;
             height: 29px;
@@ -33,6 +27,15 @@
         .auto-style15 {
             width: 206px;
         }
+        .auto-style16 {
+            width: 173px;
+        }
+        .auto-style17 {
+            width: 282px;
+        }
+        .auto-style18 {
+            width: 73%;
+        }
     </style>
 </head>
 <body>
@@ -41,7 +44,7 @@
             <asp:Label ID="Label1" runat="server" Text="Registro de odontólogo"></asp:Label>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style16">
                         <asp:Label ID="Label2" runat="server" Text="*Nombre:"></asp:Label>
                     </td>
                     <td>
@@ -49,7 +52,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style16">
                         <asp:Label ID="Label3" runat="server" Text="*Apellido:"></asp:Label>
                     </td>
                     <td>
@@ -57,7 +60,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style16">
                         <asp:Label ID="Label37" runat="server" Text="*Cédula"></asp:Label>
                     </td>
                     <td>
@@ -65,7 +68,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style16">
+                        <asp:Label ID="Label38" runat="server" Text="*Correo electrónico:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCorreo" runat="server" Width="275px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style16">
                         <asp:Label ID="Label4" runat="server" Text="*Especialidad:"></asp:Label>
                     </td>
                     <td>
@@ -76,13 +87,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">
+                    <td class="auto-style16">
                         <asp:Label ID="Label5" runat="server" Text="*Horario:"></asp:Label>
                     </td>
                     <td>
-                        <table class="auto-style1">
+                        <table class="auto-style18">
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:Label ID="Label6" runat="server" Text="Día"></asp:Label>
                                 </td>
                                 <td class="auto-style15">
@@ -93,7 +104,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkLunes" runat="server" Text="Lunes"/>
                                 </td>
                                 <td class="auto-style15">
@@ -138,7 +149,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkMartes" runat="server" Text="Martes" />
                                 </td>
                                 <td class="auto-style15">
@@ -183,7 +194,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkMiercoles" runat="server" Text="Miércoles" />
                                 </td>
                                 <td class="auto-style15">
@@ -228,7 +239,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkJueves" runat="server" Text="Jueves" />
                                 </td>
                                 <td class="auto-style15">
@@ -273,7 +284,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkViernes" runat="server" Text="Viernes" />
                                 </td>
                                 <td class="auto-style15">
@@ -318,7 +329,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkSabado" runat="server" Text="Sábado" />
                                 </td>
                                 <td class="auto-style15">
@@ -363,7 +374,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style6">
+                                <td class="auto-style17">
                                     <asp:CheckBox ID="chkDomingo" runat="server" Text="Domingo" />
                                 </td>
                                 <td class="auto-style15">
@@ -411,14 +422,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style16">&nbsp;</td>
                     <td>
                         <asp:Button ID="cmdGuardar" runat="server" Text="Guardar" />
                         <asp:Button ID="cmdCancelar" runat="server" Text="Canelar" />
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style16">&nbsp;</td>
                     <td>
                         <asp:Label ID="lblEstado" runat="server" Text="Haga clic en 'Guardar' para registrar al odontólogo."></asp:Label>
                     </td>

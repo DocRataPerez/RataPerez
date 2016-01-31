@@ -95,6 +95,24 @@ Partial Public Class frmRegistroOdontologo
     Protected WithEvents txtCedula As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Control Label38.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label38 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control txtCorreo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCorreo As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
     '''Control Label4.
     '''</summary>
     '''<remarks>

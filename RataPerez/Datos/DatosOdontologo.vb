@@ -1,6 +1,6 @@
 ﻿Public Class DatosOdontologo
     Inherits Datos
-    Public IdOdontologo, Cedula, Nombre, Apellido, IdEspecialidad, Contraseña, PrimerInicio As DatoBdD
+    Public IdOdontologo, Cedula, Nombre, Apellido, IdEspecialidad, Contraseña, PrimerInicio, Correo As DatoBdD
     Public Overrides Sub Limpiar()
         IdOdontologo.Limpiar()
         Nombre.Limpiar()
@@ -9,6 +9,7 @@
         Cedula.Limpiar()
         Contraseña.Limpiar()
         PrimerInicio.Limpiar()
+        Correo.Limpiar()
     End Sub
 
     Public Overrides Sub TomarEnCuentaTodo(TomarEnCuenta As Boolean)
@@ -19,6 +20,7 @@
         Cedula.TomarEnCuenta = TomarEnCuenta
         Contraseña.TomarEnCuenta = TomarEnCuenta
         PrimerInicio.TomarEnCuenta = TomarEnCuenta
+        Correo.TomarEnCuenta = TomarEnCuenta
     End Sub
 
     Public Overrides Function Clone() As Object
@@ -30,6 +32,7 @@
             .IdEspecialidad = IdEspecialidad
             .Cedula = Cedula
             .Contraseña = Contraseña
+            .Correo = Correo
             .PrimerInicio = PrimerInicio
         End With
         Return Yo

@@ -20,6 +20,7 @@
         Doc.Cedula.Valor = txtCedula.Text.Trim
         Doc.Contraseña.Valor = Datos.GenerarCadenaAleatoria(8)
         Doc.IdEspecialidad.Valor = cmbIdEspecialidad.Items.Item(cmbEspecialidad.SelectedIndex).ToString
+        Doc.Correo.Valor = txtCorreo.Text.Trim
         Dim DH As New DatosHorario
         With DH
             .Lunes.Valor = l1i.Text & "-" & l1f.Text & "|" & l2i.Text & "-" & l2f.Text
@@ -34,12 +35,14 @@
         TDoc.Odontologo = Doc
         TDoc.Horario = DH
         Select Case TDoc.Operar(Transaccion.TipoOperacion.Insercion)
-            Case True : lblEstado.Text = "Odontólogo registrado correctamente."
+            Case True
+                Call (New Mensajero).enviarCorreo("Su contraseña para ingreso a RataPerez es: " & Doc.Contraseña.Valor, "Contraseña RataPerez", Doc.Correo.Valor)
+                lblEstado.Text = "Odontólogo registrado correctamente. Se ha enviado un correo electrónico con las credenciales de acceso."
             Case False : lblEstado.Text = "Error interno."
         End Select
     End Sub
     Private Function DatosCorrectos() As Boolean
-        If txtApellido.Text.Trim = "" Or txtCedula.Text.Trim = "" Or txtNombre.Text.Trim = "" Then
+        If txtApellido.Text.Trim = "" Or txtCedula.Text.Trim = "" Or txtNombre.Text.Trim = "" Or txtCorreo.Text.Trim = "" Then
             lblEstado.Text = "Rellene todos los campos."
             Return False
         End If
@@ -55,6 +58,12 @@
         End If
         If (New TablaOdontologo).ExisteOdontologo(DatosDocTemp) Then
             lblEstado.Text = "Se ha registrado otro odontólogo con este número de cédula."
+            Return False
+        End If
+        DatosDocTemp.Limpiar()
+        DatosDocTemp.Correo.Valor = txtCorreo.Text.Trim
+        If (New TablaOdontologo).CorreoRegistrado(DatosDocTemp) Then
+            lblEstado.Text = "Se ha registrado otro odontólogo con este correo electrónico."
             Return False
         End If
         Return True

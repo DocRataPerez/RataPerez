@@ -26,7 +26,7 @@
                     <asp:Label ID="lblActual" runat="server" Text="Contraseña actual:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtContraseñaActual" runat="server" Width="206px"></asp:TextBox>
+                    <asp:TextBox ID="txtContraseñaActual" runat="server" Width="206px" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -34,7 +34,7 @@
                     <asp:Label ID="lblNueva" runat="server" Text="Contraseña nueva:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNuevaContraseña" runat="server" Width="203px"></asp:TextBox>
+                    <asp:TextBox ID="txtNuevaContraseña" runat="server" Width="203px" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@
                     <asp:Label ID="lblConfirmacion" runat="server" Text="Confirmación:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtConfirmacion" runat="server" Width="203px"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmacion" runat="server" Width="203px" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>

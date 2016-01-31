@@ -21,6 +21,7 @@ Public Class TablaOdontologo
             If D.Cedula.TomarEnCuenta Then .AddWithValue("@Cedula", D.Cedula.Valor)
             If D.Contraseña.TomarEnCuenta Then .AddWithValue("@Contraseña", D.Contraseña.Valor)
             If D.PrimerInicio.TomarEnCuenta Then .AddWithValue("@PrimerInicio", D.PrimerInicio.Valor)
+            If D.Correo.TomarEnCuenta Then .AddWithValue("@Correo", D.Correo.Valor)
         End With
     End Sub
 
@@ -81,5 +82,13 @@ Public Class TablaOdontologo
         SQLExe.CommandType = CommandType.StoredProcedure
         Call IgualarDatos(Dts)
         Return EjecutarCadSQL()
+    End Function
+    Public Function CorreoRegistrado(ByRef Dts As DatosOdontologo) As Integer
+        SQLExe.CommandText = "CorreoRegistradoOdontologo"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Dim T As DataTable = Mostrar()
+        If T Is Nothing Then Return -1 'Error
+        Return Val(T.Rows(0).Item(0))
     End Function
 End Class
