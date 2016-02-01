@@ -91,4 +91,16 @@ Public Class TablaOdontologo
         If T Is Nothing Then Return -1 'Error
         Return Val(T.Rows(0).Item(0))
     End Function
+    Public Function MostrarCitasPendientes(ByRef Dts As DatosOdontologo) As DataTable
+        SQLExe.CommandText = "MostrarCitasPendientesOdontologo"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return Mostrar()
+    End Function
+    Public Function UsuarioCedula(ByRef Dts As DatosOdontologo) As DataTable
+        SQLExe.CommandText = "OdontologoCedula"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return Mostrar()
+    End Function
 End Class

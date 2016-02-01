@@ -99,4 +99,10 @@
         Call IgualarDatos(Dts)
         Return Mostrar()
     End Function
+    Public Function MostrarCitasPendientes(ByRef Dts As DatosUsuario) As DataTable
+        SQLExe.CommandText = "MostrarCitasPendientes"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return Mostrar()
+    End Function
 End Class

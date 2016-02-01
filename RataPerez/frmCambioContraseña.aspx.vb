@@ -14,7 +14,7 @@
                             DU.Cedula.Valor = Request.Params("usr")
                             DU.PrimerInicio.Valor = False
                             Call (New TablaUsuario).CambiarPrimeraSesion(DU)
-                            Response.Redirect("frmPrincipal.aspx?usr=" & Request.Params("usr"))
+                            Response.Redirect("frmPanelUsuario.aspx?usr=" & DU.Cedula.Valor)
                         Case False : lblEstado.Text = "Error interno."
                     End Select
                 Case "d"
@@ -27,7 +27,7 @@
                             DtsO.Cedula.Valor = Request.Params("usr")
                             DtsO.PrimerInicio.Valor = False
                             Call (New TablaOdontologo).CambiarPrimeraSesion(DtsO)
-                            MsgBox("Inicia sesión doc")
+                            Response.Redirect("frmPanelOdontologo.aspx?usr=" & DtsO.Cedula.Valor)
                         Case False : lblEstado.Text = "Error interno."
                     End Select
             End Select

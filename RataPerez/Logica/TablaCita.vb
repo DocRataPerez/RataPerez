@@ -27,7 +27,10 @@ Public Class TablaCita
     End Function
 
     Public Overrides Function Eliminar(ByRef Dts As Datos) As Boolean
-        Throw New NotImplementedException()
+        SQLExe.CommandText = "EliminarCita"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return EjecutarCadSQL()
     End Function
 
     Public Overrides Function Insertar(ByRef Dts As Datos) As Boolean

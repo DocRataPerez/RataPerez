@@ -94,6 +94,8 @@
     <Content Include="frmAdmin.aspx" />
     <Content Include="frmCambioContraseña.aspx" />
     <Content Include="frmInicioSesion.aspx" />
+    <Content Include="frmPanelOdontologo.aspx" />
+    <Content Include="frmPanelUsuario.aspx" />
     <Content Include="frmPrincipal.aspx" />
     <Content Include="frmRegistro.aspx" />
     <Content Include="frmRegistroEspecialidad.aspx" />
@@ -120,6 +122,20 @@
     </Compile>
     <Compile Include="frmCambioContraseña.aspx.vb">
       <DependentUpon>frmCambioContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="frmPanelOdontologo.aspx.designer.vb">
+      <DependentUpon>frmPanelOdontologo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPanelOdontologo.aspx.vb">
+      <DependentUpon>frmPanelOdontologo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="frmPanelUsuario.aspx.designer.vb">
+      <DependentUpon>frmPanelUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPanelUsuario.aspx.vb">
+      <DependentUpon>frmPanelUsuario.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="frmPrincipal.aspx.designer.vb">
