@@ -100,6 +100,7 @@
     <Content Include="frmRegistro.aspx" />
     <Content Include="frmRegistroEspecialidad.aspx" />
     <Content Include="frmRegistroOdontologo.aspx" />
+    <Content Include="frmReservaCita.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +176,15 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Logica\CosasFecha.vb" />
+    <Compile Include="frmReservaCita.aspx.designer.vb">
+      <DependentUpon>frmReservaCita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReservaCita.aspx.vb">
+      <DependentUpon>frmReservaCita.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Logica\Mensajero.vb" />
+    <Compile Include="Logica\OpCita.vb" />
     <Compile Include="Logica\TablaAdmin.vb" />
     <Compile Include="Logica\TablaCita.vb" />
     <Compile Include="Logica\TablaEspecialidad.vb" />
