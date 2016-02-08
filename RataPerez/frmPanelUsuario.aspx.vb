@@ -13,7 +13,7 @@
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("frmPrincipal.aspx?usr=" & Request.Params("usr"))
+        Response.Redirect("frmPrincipal.aspx?usr=" & Request.Params("usr") & "&c=-1")
     End Sub
 
     Protected Sub cmdEliminarCita_Click(sender As Object, e As EventArgs) Handles cmdEliminarCita.Click
@@ -34,5 +34,10 @@
         DU.Cedula.Valor = Request.Params("usr")
         gridCitas.DataSource = (New TablaUsuario).MostrarCitasPendientes(DU)
         gridCitas.DataBind()
+    End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If gridCitas.SelectedRow Is Nothing Then Exit Sub
+        Response.Redirect("frmPrincipal.aspx?usr=" & Request.Params("usr") & "&c=" & gridCitas.SelectedRow.Cells(1).Text)
     End Sub
 End Class

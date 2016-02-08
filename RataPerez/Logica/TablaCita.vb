@@ -23,7 +23,10 @@ Public Class TablaCita
     End Sub
 
     Public Overrides Function Editar(ByRef Dts As Datos) As Boolean
-        Throw New NotImplementedException()
+        SQLExe.CommandText = "ActualizarCita"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        Return EjecutarCadSQL()
     End Function
 
     Public Overrides Function Eliminar(ByRef Dts As Datos) As Boolean
@@ -57,6 +60,12 @@ Public Class TablaCita
             .AddWithValue("@FechaDesde", FechaDesde)
             .AddWithValue("@FechaHasta", FechaHasta)
         End With
+        Return Mostrar()
+    End Function
+    Public Function MostrarCitaIdCita(ByRef Dts As DatosCita) As DataTable
+        SQLExe.CommandText = "MostrarCitaIdCita"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
         Return Mostrar()
     End Function
 End Class

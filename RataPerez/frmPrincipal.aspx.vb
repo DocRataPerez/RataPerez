@@ -10,6 +10,7 @@
             For Each Fila As DataRow In (New TablaEspecialidad).SeleccionarTodo().Rows
                 cmbEspecialidad.Items.Add(Fila.Item("especialidad"))
             Next
+            If Request.Params("c") <> "-1" Then Call InterfazEdicion()
         End If
     End Sub
 
@@ -41,8 +42,14 @@
             .IdUsuario.Valor = lblIdUsuario.Text
             .Fecha.Valor = CDate(cmbFecha.Items.Item(cmbFecha.SelectedIndex).ToString)
             .Hora.Valor = GridView1.SelectedRow.Cells(1).Text & ":00:00"
+            If Request.Params("c") <> "-1" Then .IdCita.Valor = Request.Params("c")
         End With
-        Select Case (New TablaCita).Insertar(DC)
+        Dim Respuesta As Boolean = False
+        Select Case Request.Params("c") = "-1"
+            Case True : Respuesta = (New TablaCita).Insertar(DC)
+            Case False : Respuesta = (New TablaCita).Editar(DC)
+        End Select
+        Select Case Respuesta
             Case True
                 Call ConsultarDiasDisponibles()
                 lblEstado.Text = "Cita reservada."
@@ -50,6 +57,7 @@
         End Select
     End Sub
     Protected Sub cmdConsultarHorarios_Click(sender As Object, e As EventArgs) Handles cmdConsultarHorarios.Click
+        If cmbFecha.SelectedIndex = -1 Then Exit Sub
         Call ConsultarHorarios()
     End Sub
     Private Sub ConsultarHorarios()
@@ -91,5 +99,23 @@
             GridView1.DataSource = Nothing
             GridView1.DataBind()
         End If
+    End Sub
+    Private Sub InterfazEdicion()
+        Call DeshabilitarCosas()
+        Dim DC As New DatosCita
+        DC.IdCita.Valor = Request.Params("c")
+        Dim Cita As DataTable = (New TablaCita).MostrarCitaIdCita(DC)
+        cmbEspecialidad.Text = Cita.Rows(0).Item("Especialidad")
+        cmbOdontologo.Items.Add(Cita.Rows(0).Item("Nombre"))
+        cmbOdontologo.Text = Cita.Rows(0).Item("Nombre")
+        cmbIdOdontologo.Items.Add(Cita.Rows(0).Item("IdOdontologo"))
+        Call ConsultarDiasDisponibles()
+        cmdReservar.Text = "Guardar"
+    End Sub
+    Private Sub DeshabilitarCosas()
+        cmbEspecialidad.Enabled = False
+        cmdConsultarOdontologo.Enabled = False
+        cmbOdontologo.Enabled = False
+        'cmdConsultarDisponibilidad.Enabled = False
     End Sub
 End Class
