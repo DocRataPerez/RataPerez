@@ -50,6 +50,7 @@
                         </asp:DropDownList>
                         <asp:DropDownList ID="cmbIdOdontologo" runat="server" Visible="False">
                         </asp:DropDownList>
+                        <asp:Button ID="cmdConsultarDisponibilidad" runat="server" Text="Consultar disponibilidad" />
                     </td>
                 </tr>
                 <tr>
@@ -57,8 +58,8 @@
                         <asp:Label ID="lblCita" runat="server" Text="Fecha:"></asp:Label>
                     </td>
                     <td>
-                        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                        <asp:Button ID="cmdConsultarDisponibilidad" runat="server" Text="Consultar disponibilidad" />
+                        <asp:DropDownList ID="cmbFecha" runat="server">
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>

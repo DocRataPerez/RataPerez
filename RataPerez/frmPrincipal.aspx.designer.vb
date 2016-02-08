@@ -122,6 +122,15 @@ Partial Public Class frmPrincipal
     Protected WithEvents cmbIdOdontologo As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''Control cmdConsultarDisponibilidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cmdConsultarDisponibilidad As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control lblCita.
     '''</summary>
     '''<remarks>
@@ -131,22 +140,13 @@ Partial Public Class frmPrincipal
     Protected WithEvents lblCita As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control Calendar1.
+    '''Control cmbFecha.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Calendar1 As Global.System.Web.UI.WebControls.Calendar
-    
-    '''<summary>
-    '''Control cmdConsultarDisponibilidad.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents cmdConsultarDisponibilidad As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents cmbFecha As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control lblHorario.

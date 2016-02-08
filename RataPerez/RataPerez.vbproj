@@ -174,6 +174,7 @@
       <DependentUpon>frmInicioSesion.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Logica\CosasFecha.vb" />
     <Compile Include="Logica\Mensajero.vb" />
     <Compile Include="Logica\TablaAdmin.vb" />
     <Compile Include="Logica\TablaCita.vb" />

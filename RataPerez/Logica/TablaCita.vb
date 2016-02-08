@@ -49,4 +49,14 @@ Public Class TablaCita
         Call IgualarDatos(Dts)
         Return Mostrar()
     End Function
+    Public Function CitasEnPeriodoDeFecha(ByRef Dts As DatosCita, FechaDesde As Date, FechaHasta As Date) As DataTable
+        SQLExe.CommandText = "CitasEnPeriodoDeFecha"
+        SQLExe.CommandType = CommandType.StoredProcedure
+        Call IgualarDatos(Dts)
+        With SQLExe.Parameters
+            .AddWithValue("@FechaDesde", FechaDesde)
+            .AddWithValue("@FechaHasta", FechaHasta)
+        End With
+        Return Mostrar()
+    End Function
 End Class
