@@ -60,6 +60,7 @@
                     <td>
                         <asp:DropDownList ID="cmbFecha" runat="server">
                         </asp:DropDownList>
+                        <asp:Button ID="cmdConsultarHorarios" runat="server" Text="Consultar horarios" />
                     </td>
                 </tr>
                 <tr>

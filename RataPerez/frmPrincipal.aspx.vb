@@ -102,21 +102,42 @@
     End Function
 
     Protected Sub cmdReservar_Click(sender As Object, e As EventArgs) Handles cmdReservar.Click
-        Exit Sub
         Dim DC As New DatosCita
         With DC
-            DC.IdOdontologo.Valor = cmbIdOdontologo.Items.Item(cmbOdontologo.SelectedIndex).ToString
-            DC.IdUsuario.Valor = lblIdUsuario.Text
-            ' DC.Fecha.Valor = Calendar1.SelectedDate
-            DC.Hora.Valor = GridView1.SelectedRow.Cells(1).Text & ":00:00"
+            .IdOdontologo.Valor = cmbIdOdontologo.Items.Item(cmbOdontologo.SelectedIndex).ToString
+            .IdUsuario.Valor = lblIdUsuario.Text
+            .Fecha.Valor = CDate(cmbFecha.Items.Item(cmbFecha.SelectedIndex).ToString)
+            .Hora.Valor = GridView1.SelectedRow.Cells(1).Text & ":00:00"
         End With
         Select Case (New TablaCita).Insertar(DC)
             Case True : lblEstado.Text = "Cita reservada."
             Case False : lblEstado.Text = "Error. Cita no reservada."
         End Select
     End Sub
-
-    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
-
+    Protected Sub cmdConsultarHorarios_Click(sender As Object, e As EventArgs) Handles cmdConsultarHorarios.Click
+        Dim Fecha As Date = cmbFecha.Items.Item(cmbFecha.SelectedIndex).ToString
+        Dim Intervalos As String = ""
+        For Each D() As Object In ConsultarDisponibilidad()
+            If D(0).Equals(Fecha) Then
+                Intervalos = D(1)
+                Exit For
+            End If
+        Next
+        Dim IntervalosDisponibles() As String = Split(Intervalos, "|")
+        Dim T As New DataTable
+        With T
+            .Columns.Add("Desde")
+            .Columns.Add("Hasta")
+            For I As Integer = 0 To IntervalosDisponibles.Count - 1
+                If IntervalosDisponibles(I) <> "-" Then
+                    Dim Horas() As String = Split(IntervalosDisponibles(I), "-")
+                    For J As Integer = Horas(0) To Horas(1) - 1
+                        .Rows.Add({J, J + 1})
+                    Next
+                End If
+            Next
+        End With
+        GridView1.DataSource = T
+        GridView1.DataBind()
     End Sub
 End Class
