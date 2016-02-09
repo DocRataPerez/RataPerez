@@ -8,12 +8,13 @@
             lblIdOdontologo.Text = T.Rows(0).Item("IdOdontologo")
             lblIdEspecialidad.Text = T.Rows(0).Item("IdEspecialidad")
             Call ConsultarDiasDisponibles()
+            If Request.Params("c") <> -1 Then Call InterfazEdicion()
         End If
     End Sub
 
     Private Sub ConsultarDiasDisponibles()
         Call Limpiar(1)
-        For Each DiaTrabajo() As Object In OpCita.ConsultarDisponibilidad(lblIdEspecialidad.Text)
+        For Each DiaTrabajo() As Object In OpCita.ConsultarDisponibilidad(lblIdOdontologo.Text)
             cmbFecha.Items.Add(CDate(DiaTrabajo(0)).ToLongDateString)
         Next
     End Sub
@@ -25,7 +26,7 @@
         Call Limpiar(2)
         Dim Fecha As Date = cmbFecha.Items.Item(cmbFecha.SelectedIndex).ToString
         Dim Intervalos As String = ""
-        For Each D() As Object In OpCita.ConsultarDisponibilidad(lblIdEspecialidad.Text)
+        For Each D() As Object In OpCita.ConsultarDisponibilidad(lblIdOdontologo.Text)
             If D(0).Equals(Fecha) Then
                 Intervalos = D(1)
                 Exit For
@@ -70,8 +71,14 @@
                 .IdUsuario.Valor = T.Rows(0).Item("idusuario")
                 .Fecha.Valor = CDate(cmbFecha.Items.Item(cmbFecha.SelectedIndex).ToString)
                 .Hora.Valor = GridView1.SelectedRow.Cells(1).Text & ":00:00"
+                If Request.Params("c") <> "-1" Then .IdCita.Valor = Request.Params("c")
             End With
-            Select Case (New TablaCita).Insertar(DC)
+            Dim Respuesta As Boolean = False
+            Select Case Request.Params("c") = "-1"
+                Case True : Respuesta = (New TablaCita).Insertar(DC)
+                Case False : Respuesta = (New TablaCita).Editar(DC)
+            End Select
+            Select Case Respuesta
                 Case True
                     Call ConsultarDiasDisponibles()
                     lblEstado.Text = "Cita reservada."
@@ -88,4 +95,16 @@
         End If
         Return True
     End Function
+    Private Sub InterfazEdicion()
+        Call DeshabilitarCosas()
+        Dim DC As New DatosCita
+        DC.IdCita.Valor = Request.Params("c")
+        Dim Cita As DataTable = (New TablaCita).MostrarCitaIdCita(DC)
+        txtCedulaPaciente.Text = Cita.Rows(0).Item("Cedula")
+        ' lblIdOdontologo
+        cmdReservar.Text = "Guardar"
+    End Sub
+    Private Sub DeshabilitarCosas()
+        txtCedulaPaciente.Enabled = False
+    End Sub
 End Class

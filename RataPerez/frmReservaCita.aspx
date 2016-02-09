@@ -22,8 +22,8 @@
     
         <asp:Panel ID="Panel1" runat="server">
             <asp:Label ID="lblBienvenido" runat="server" Text="Reserva de citas:"></asp:Label>
-            <asp:Label ID="lblIdOdontologo" runat="server" EnableTheming="True" Text="[id]" Visible="False"></asp:Label>
-            <asp:Label ID="lblIdEspecialidad" runat="server" EnableTheming="True" Text="[id]" Visible="False"></asp:Label>
+            <asp:Label ID="lblIdOdontologo" runat="server" EnableTheming="True" Text="[id]"></asp:Label>
+            <asp:Label ID="lblIdEspecialidad" runat="server" EnableTheming="True" Text="[id]"></asp:Label>
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">

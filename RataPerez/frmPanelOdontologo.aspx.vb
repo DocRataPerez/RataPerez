@@ -32,6 +32,11 @@
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("frmReservaCita.aspx?doc=" & Request.Params("usr"))
+        Response.Redirect("frmReservaCita.aspx?doc=" & Request.Params("usr") & "&c=-1")
+    End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If gridCitas.SelectedRow Is Nothing Then Exit Sub
+        Response.Redirect("frmReservaCita.aspx?doc=" & Request.Params("usr") & "&c=" & gridCitas.SelectedRow.Cells(1).Text)
     End Sub
 End Class
